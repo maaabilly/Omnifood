@@ -1,0 +1,571 @@
+/* 
+COLORS
+Main Accent Color     -   #e67e22
+Accent action color   -   #cf6d17
+*/
+
+/* ---------------------------- */
+/* BASIC SETUP */
+/* ---------------------------- */
+
+* {
+    margin: 0;                  /* Global page settings */
+    padding: 0;                 /* better to change individual elements (better practice) */
+    box-sizing: border-box;     /* pretty much all sites used border-box */
+}
+
+/* defaults for page */
+html {
+    background-color: #fff;             /* sets default background color to white */
+    color: #555;                       /* font-color and color can be used the same */
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+/* clears floats to make spacing between sections */
+.clearfix {zoom:1}             
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+
+/* ---------------------------- */
+/* REUSABLE COMPONENTS */
+/* ---------------------------- */
+
+.row {
+    max-width: 1140px;      /* covers browser width */
+    margin: 0 auto;
+
+}
+
+section {
+    padding: 80px 0;        /* separates each section */
+}
+
+.box {
+    padding: 1%;            /* padding between box items (meal-photos) */
+}
+
+/* -------- HEADINGS -------- */
+h1,                                 /* sets all heading elements universally */
+h2,
+h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+    word-spacing: 4px;
+}
+
+/* heading text */
+h1 {                    
+    margin: 0;   
+    margin-bottom: 20px;
+    color: white;             /* change font color to white instead of default grey */
+    font-size: 240%;           /* font-size use percentage for responsiveness */
+    word-spacing: 4px;           /* spacing between words */
+    letter-spacing: 1px;       /* spacing between letters */
+}
+
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;         /* puts heading into middle of page */
+    margin-bottom: 30px;        /* separation is good to emphasize heading */
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+
+/* underline heading */
+h2:after {
+    display: block;         /* line break and puts under h2 */
+    height: 2px;            /* thickness of line */
+    width: 100px;           /* length of line horizontally */
+    background-color: #e67e22;
+    content: " ";
+    margin: 0 auto;
+    margin-top: 30px;       /* separation from h2 */
+}
+
+/* -------- PARAGRAPHS -------- */
+.long-copy {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;               /* need to center so 100-70 = 30/2 = 15% */
+}
+
+.box p {
+    font-size: 90%;
+    line-height: 145%;
+}
+
+/* -------- ICONS -------- */
+.icon-big {
+    font-size: 350%;
+    display: block;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+.icon-small {
+    display: inline-block;          /* inline-block so i can set width*/
+    width: 30px;
+    -webkit-text-emphasis: center;
+            text-emphasis: center;
+    color: #e67e22;
+    font-size: 120%;
+    margin-right: 10px;
+
+    /* secret to align text and icons*/
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+/* -------- lINKS -------- */
+/* Do this when you want all links to inherit the same styling */
+a:link,
+a:visited {
+    color: #e67e22;
+    text-decoration: none;
+    padding-bottom: 1px;                            /* separates the "underline" to the content (text) */
+    border-bottom: 1px solid #e67e22;           /* instead of underlining, looks better to make border bottom */
+    transition: border-bottom 0.2s, color 0.2s;   /* transition for the color and border-bottom to change in 0.2 seconds */
+}   
+
+a:hover,
+a:active {
+    color: #555;
+    border-bottom: 1px solid transparent;           /* this makes it go away */
+}
+
+/* -------- BUTTONS -------- */
+.btn:link,
+.btn:visited,
+input[type=submit] {                /* gives submit buttons the same styling */
+    display: inline-block;          /* inline-block puts elements side by side, not stacked vertically*/
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 200px;           /* makes rounded shape */
+    color: white;                 /* referring to text color*/
+    transition: background-color 0.2s, border 0.2s, color 0.2s;     
+    /* how transition works 
+    transition: (thing you want to transition) duration*/
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit] {                /* gives submit buttons the same styling */
+    background-color: #e67e22;
+    border: 1px solid #e67e22;    
+    margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,                 /* gives submit buttons the same hovering effect */
+input[type=submit]:active {               /* gives submit buttons the same hovering effect */
+    background-color: #cf6d17;
+}
+
+.btn-full:hover,
+.btn-full:active {
+    border: 1px solid #cf6d17;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+    border: 1px solid #cf6d17;
+    color: white;
+}
+
+/* ---------------------------- */
+/* HEADER */
+/* ---------------------------- */
+
+header {
+    /* puts tint in front of background using linear-gradient*/
+    /* must use rgba for this, 0.7 is how transparent it is, use same number for same tint through out*/
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(img/hero.jpg);
+    background-size: cover;             /* use this to cover section with image*/
+    background-position: center;        
+    height: 100vh;                      /* 100% of view height*/
+    background-attachment: fixed;       /* fixes image so when scrolling image wont move with page*/
+}
+
+.hero-text-box {
+    position: absolute;                 
+    width: 1140px;                  /* browser width */
+    top: 50%;                       /* position middle of page*/
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+   height: 100px;                   /* size of logo */
+   width: auto;                     /* maintain original shape of logo */
+   float: left;                     /* position left of nav bar*/
+   margin-top: 20px;                /* so logo wont touch very top of page, better styling */
+}
+
+.main-nav {
+    float: right;                   /* position right */
+    list-style: none;               /* no bullet points */
+    margin-top: 55px;               /* better styling, not touching top of page*/
+}
+
+.main-nav li {
+    display: inline-block;          /* inline-block can place elements side by side, instead forcing line break */
+    margin-left: 40px;              /* separation between elements */
+}
+
+.main-nav li a:link, 
+.main-nav li a:visited {
+    padding: 8px 0;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    word-spacing: 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover, 
+.main-nav li a:active {
+    border-bottom: 2px solid #e67e22;
+}
+
+/* ---------------------------- */
+/* FEATURES */
+/* ---------------------------- */
+
+.section-features .long-copy {
+    margin-bottom: 30px;            /*Only want to apply to this long-copy paragraph*/
+}
+
+/* ---------------------------- */
+/* MEALS */
+/* ---------------------------- */
+
+.section-meals {
+    padding: 0;                 /* Makes section span entire width of browser */
+}
+
+.meals-showcase {
+    list-style: none;
+    width: 100%;                /* span entire browser */
+}
+
+.meals-showcase li {
+    display: block;             /* must be block element to use float attribute */
+    float: left;                /* starts left of page*/
+    width: 25%;                 /* splits images into 4 (100/4 = 25) */
+}
+
+.meal-photo {
+    width: 100%;                /* spans entire 25% width of the li column */
+    margin: 0;                  /* touching each other */
+    overflow: hidden;           /* keeps everything in browser width, no horizontal scrolling, can put this in universal html */
+    background: black;            /* Original background is white so need to change to black*/
+}
+
+.meal-photo img {
+    opacity: 0.7;                   /* lightens the picture, but after changing background to black it tints it to black*/
+    width: 100%;                    /* image spans entire space, no borders*/
+    height: auto;                   /* maintains original photo scale */
+    transform: scale(1.15);         /* Makes image bigger for zoom-out effect */
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.meal-photo img:hover {
+    opacity: 1;                     /* Change overlay back to 100% */
+    transform: scale(1.03);         /* Zoom img back to full, not 1.0 because white padding showing*/
+}
+
+/* ---------------------------- */
+/* HOW IT WORKS */
+/* ---------------------------- */
+
+.section-steps {
+    background-color: #f4f4f4;         /* creates subtle separation */
+}
+
+.steps-box:first-child {
+    text-align: right;          /* aligns not only text, aligns the img as well*/
+    padding-right: 3%;
+    margin-top: 30px;
+}
+
+.steps-box:last-child {
+    padding-left: 3%;
+    margin-top: 70px;
+}
+
+.app-screen {
+    width: 40%;
+}
+
+.works-step {
+    margin-bottom: 50px;
+}
+
+.works-step:last-of-type {
+    margin-bottom: 80px;
+}
+
+.works-step div {
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    /* display: inline-block;           */
+    /* 
+    inline-block to make sure it wont start a line break
+    so its side by side with the text (paragraph)
+    */ 
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    text-align: center;     /* centers number horizontally*/
+    padding: 5px;           /* centers number in the border vertically */
+    float: left;            /* floats next to paragraph */
+    font-size: 150%;
+    margin-right: 25px;
+}
+
+.btn-app:link,
+.btn-app:visited {
+    border-bottom: 0;        /* needs specific one to make border not show on this link*/
+}
+
+.btn-app img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+/* ---------------------------- */
+/* CITIES */
+/* ---------------------------- */
+
+.box img {
+    width: 100%;            /* width 100% as wide as the box */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.city-feature {
+    margin-bottom: 5px;
+}
+
+/* ---------------------------- */
+/* TESTIMONIALS */
+/* ---------------------------- */
+
+.section-testimonials {
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(img/back-customers.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+}
+
+blockquote {
+    padding: 2%;
+    font-style: italic;
+    line-height: 145%;
+    position: relative;      /* parent element must have position:relative for child to be absolute */
+    margin-top: 40px;
+}
+
+blockquote:before {
+    /* use content to place content into html, can do same in html */
+    content: "\201C";       /* code to show special characters, can look up online */
+    font-size: 500%;        
+    display: block;         /* places in new line, so it don't interfere with blockquote */
+    position: absolute;     /* For this to work, parent element must have position: relative */
+    top: -5px;
+    left: -5px;
+}
+
+cite {
+    font-style: 90%;
+    margin-top: 25px;
+    display: block;        /* line break, puts cite under blockquote */
+}
+
+cite img {
+    height: 45px;               /* adjusting size of image */
+    border-radius: 50%;         /* makes image round (a circle frame) */
+    margin-right: 10px;         /* Separates image to names*/
+    vertical-align: middle;     /* places names aligned middle of the image */
+}
+
+/* ---------------------------- */
+/* MEAL PLANS */
+/* ---------------------------- */
+
+.section-plans {
+    background-color: #f4f4f4;
+}
+
+.plan-box {
+    background-color: white;    /* create contrast between background */
+    border-radius: 5px;         /* round corners */
+    width: 90%;
+    margin-left: 5%;        /* 100 - 90 = 10 / 2 = 5% */
+    /* 3d effect making it look like its popping off the screen*/
+    /*box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];t*/
+    box-shadow: 0 2px 2px #efefef;
+}
+
+.plan-box div {
+    padding: 15px;
+    border-bottom: 1px solid #e8e8e8;       /* grey line for separation effect*/
+}
+
+.plan-box div:first-child {
+    background-color: #fcfcfc;          /* creates contrast between box and background */
+    border-top-left-radius: 5px;            /* makes top left radius match rest of box*/
+    border-top-right-radius: 5px;           /* makes top right radius match rest of box*/
+}
+
+.plan-box div:last-child{
+    text-align: center;                 /* aligns button in center */
+    border: 0;
+}
+
+.plan-price {
+    font-size: 300%;            /* Show emphasis on important part*/
+    font-weight: 100;           /* bigger text, use lighter font weight*/
+    margin-bottom: 10px;        /* separation from content below */
+    color: #e67e22;
+}
+
+.plan-price span {
+    font-size: 30%;             /* 30 percent of 300 (parent element) */
+    font-weight: 300;           /* regular font size so back to universal font-weight */
+}
+
+.plan-price-meal {
+    font-size: 80%;             /* creates contrast in font sizing, styling */
+}
+
+.plan-box ul {
+    list-style: none;           /* gets rid of bullet points */
+}
+
+.plan-box ul li {
+    padding: 5px 0;             /* spacing between li elements top and bottom*/
+}
+
+
+
+/* ---------------------------- */
+/* CONTACT FORM */
+/* ---------------------------- */
+
+.contact-form { 
+    width: 60%;                     /* looks better to not have it span entire width */
+    margin: 0 auto;                 /* centers in parent element*/
+}
+
+input[type=text],                   /* select type="text" inside input elements */
+input[type=email],                  /* select type="email" inside input elements */
+select,
+textarea {
+    width: 100%;                    /* 100% of the 60% set above */
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;       /* removes weird border color */
+}
+
+textarea {
+    height: 100px;                  /* vertical height of text input area*/
+}
+
+input[type=checkbox] {              /* select type="checkbox" inside input elements */
+    margin: 10px 5px 10px 0;        /* margin: top right bottom left */
+}
+
+*:focus{ outline: none}               /* removes blue selected border (chrome default) */
+
+
+/* ---------------------------- */
+/* FOOTER */
+/* ---------------------------- */
+
+footer {
+    background-color: #333;         /* color footer dark grey */
+    padding: 40px;                    /* space between start and end of footer and content inside */
+    font-size: 80%;                   /* footer global font size change */
+}
+
+.footer-nav li,
+.social-links li {
+    list-style: none;                   /* no bullet points */
+    display: inline-block;              /* li elements place side by side */
+    margin-right: 20px;                 /* spacing between li elements*/
+}
+
+.footer-nav { float: left;}             /* float nav to the left */
+
+.social-links { float: right;}          
+
+.footer-nav li:last-child,
+.social-links li:last-child { margin-right: 0;} /* no margin-right for the last li element */
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+    text-decoration: none;          /* no underline */
+    border: 0;                      
+    color: #888;                  /* light grey, subtle but readable */
+    transition: color 0.2s;         /* transition when hovering mouse over element */
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active { color: #ddd; }    /* hover color */
+
+.social-links li a:link,
+.social-links li a:visited { font-size: 160%; }     /* change size of social link icons */
+
+.facebook-icon,
+.twitter-icon,
+.google-icon,
+.instagram-icon { transition: color 0.2s; }         /* transition for social icons */
+
+.facebook-icon:hover,
+.facebook-icon:active { color: #3b5998}
+
+.twitter-icon:hover,
+.twitter-icon:active { color: #1da1f2}
+
+.google-icon:hover,
+.google-icon:active { color: #ea4335}
+
+.instagram-icon:hover,
+.instagram-icon:active { color: #c32aa3}
+
+footer p {
+    color: #888;                /* same color as footer-nav */
+    text-align: center;           /* center text in middle of footer */
+    margin-top: 15px;             /* spacing between footer-nav and copyright */
+}
